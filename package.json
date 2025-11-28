@@ -1,0 +1,16 @@
+{
+  "name": "astro-basic-app",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "astro": "^4.0.0",
+    "typescript": "^5.3.0",
+    "@types/node": "^20.0.0"
+  }
+}
