@@ -1,22 +1,148 @@
 ---
-import { greet } from '../utils/greet';
-const message: string = greet('Astro');
-// Simple Astro page
+import type { IContent } from '@components/grid-item/GridItem.astro';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Grid from '@components/grid/Grid.astro';
+
+type TGridContent = {
+  id: number;
+  content: IContent[];
+}
+
+const pageTitle = "Bento Grid";
+const mainTitle = "Bento Grid Layout Example";
+const gridContent: TGridContent[] = [{
+  id: 1,
+  content: [
+    {
+      type: 'text',
+      data: '<h2>Social Media 10x Faster with AI</h2>'
+    },
+    {
+      type: 'image',
+      data: {
+        src: '/path/to/image.jpg',
+        alt: 'Five star rating'
+      }
+    },
+    {
+      type: 'text',
+      data: '<p>Over 4,000 5-star reviews</p>'
+    }, 
+  ]
+}, {
+  id: 2,
+  content: [
+    {
+      type: 'image',
+      data: {
+        src: '/path/to/another-image.jpg',
+        alt: 'AI generated content'
+      }
+    },
+    {
+      type: 'text',
+      data: '<h3>Manage multiple accounts and platforms.</h3>'
+    }
+]}, {
+  id: 3,
+  content: [
+    {
+      type: 'text',
+      data: '<h3>Maintain a consistent posting schedule.</h3>'
+    },
+    {
+      type: 'image',
+      data: {
+        src: '/path/to/schedule-image.jpg',
+        alt: 'Scheduling posts'
+      }
+    }
+  ]
+}, {
+  id: 4,
+  content: [
+    {
+      type: 'text',
+      data: '<h3>Schedule to social media.</h3>'
+    },
+    {
+      type: 'image',
+      data: {
+        src: '/path/to/insights-image.jpg',
+        alt: 'Analytics insights'
+      }
+    },
+     {
+      type: 'text',
+      data: '<h3>Optimize post timings to publish content at the perfect time for your audience.</h3>'
+    }
+  ]
+}, { 
+  id: 5,
+  content: [
+    {
+      type: 'image',
+      data: {
+        src: '/path/to/engagement-image.jpg',
+        alt: 'Engagement metrics'
+      }
+    },
+    {
+      type: 'text',
+      data: '<h3>Grow followers with non-stop content.</h3>'
+    }
+  ]
+}, {
+  id: 6,
+  content: [
+    {
+      type: 'text',
+      data: '<h3>>56% faster audience growth</h3>'
+    },
+    {
+      type: 'image',
+      data: {
+        src: '/path/to/performance-image.jpg',
+        alt: 'Performance analytics'
+      }
+    }
+  ]
+}, {
+  id: 7,
+  content: [
+    {
+      type: 'text',
+      data: '<h3>Create and schedule content quicker.</h3>'
+    },
+    {
+      type: 'image',
+      data: {
+        src: '/path/to/collaboration-image.jpg',
+        alt: 'Team collaboration'
+      }
+    }
+  ]
+}, {
+  id: 8,
+  content: [
+    {
+      type: 'text',
+      data: '<h3>Write your content using AI.</h3>'
+    },
+    {
+      type: 'image',
+      data: {
+        src: '/path/to/productivity-image.jpg',
+        alt: 'Productivity boost'
+      }
+    }
+  ]
+}];
+
+
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Grid layout</title>
-  </head>
-  <body>
-    <main>
-      <h1>Welcome to Astro</h1>
-      <p>This is a minimal starter page.</p>
-      <p>Try <code>npm run dev</code> to start the local dev server.</p>
-      <p>{message}</p>
-    </main>
-  </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{mainTitle}</h1>
+  <Grid gridContent={gridContent} /> 
+</BaseLayout>

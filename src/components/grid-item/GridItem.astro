@@ -1,0 +1,27 @@
+---
+import styles from './grid-item.module.css';
+
+type TextItem = { type: 'text'; data: string };
+type ImageItem = { type: 'image'; data: { src: string; alt: string } };
+export type IContent = TextItem | ImageItem;
+
+interface Props {
+  content: IContent[];
+};
+
+const { content } = Astro.props;
+---
+<div class={styles.gridItem}>
+  {content.map((item) => {
+    if (item.type === 'text') {
+      // `set:html` injects raw HTML into the element. Ensure you sanitize untrusted HTML to avoid XSS.
+      return <div class="text-block" set:html={item.data} />;
+    } else if (item.type === 'image') {
+      return (
+        <div class="image-block">
+          <img src={item.data.src} alt={item.data.alt} />
+        </div>
+      );
+    }
+  })}
+</div>

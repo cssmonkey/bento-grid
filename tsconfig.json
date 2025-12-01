@@ -1,4 +1,5 @@
 {
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
@@ -11,7 +12,12 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "types": ["astro/client"]
+    "types": ["astro/client"],
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@layouts/*": ["layouts/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

@@ -1,0 +1,20 @@
+---
+import type { IContent } from '@components/grid-item/GridItem.astro';
+
+import styles from './grid.module.css';
+
+import GridItem from '@components/grid-item/GridItem.astro';
+
+export interface Props {
+  gridContent: {
+    content: IContent[];
+  }[]
+};
+
+const { gridContent } = Astro.props;
+---
+<div class={styles.grid}>
+  {gridContent.map(item => (
+      <GridItem content={item.content}/>
+  ))}
+</div>
