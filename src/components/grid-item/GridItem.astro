@@ -1,5 +1,5 @@
 ---
-import styles from './grid-item.module.css';
+import clsx from 'clsx';
 
 type TextItem = { type: 'text'; data: string };
 type ImageItem = { type: 'image'; data: { src: string; alt: string } };
@@ -7,11 +7,13 @@ export type IContent = TextItem | ImageItem;
 
 interface Props {
   content: IContent[];
+  cssClass?: string;
+  itemKey?: string;
 };
 
-const { content } = Astro.props;
+const { content, cssClass, itemKey } = Astro.props;
 ---
-<div class={styles.gridItem}>
+<div class={clsx(cssClass)} data-item={itemKey}>
   {content.map((item) => {
     if (item.type === 'text') {
       // `set:html` injects raw HTML into the element. Ensure you sanitize untrusted HTML to avoid XSS.

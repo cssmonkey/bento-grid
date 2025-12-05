@@ -6,140 +6,165 @@ import Grid from '@components/grid/Grid.astro';
 
 type TGridContent = {
   id: number;
-  content: IContent[];
+  subGrid: {
+    content: IContent[];
+  }[]
 }
 
 const pageTitle = "Bento Grid";
 const mainTitle = "Bento Grid Layout Example";
 const gridContent: TGridContent[] = [{
   id: 1,
-  content: [
-    {
-      type: 'text',
-      data: '<h2>Social Media 10x Faster with AI</h2>'
+  subGrid: [
+    { 
+      content: [{
+          type: 'text',
+          data: '<h2>Social Media 10x Faster with AI</h2>'
+        },
+        {
+          type: 'image',
+          data: {
+            src: '/path/to/image.jpg',
+            alt: 'Five star rating'
+          }
+        },
+        {
+          type: 'text',
+          data: '<p>Over 4,000 5-star reviews</p>'
+        }]
     },
     {
-      type: 'image',
-      data: {
-        src: '/path/to/image.jpg',
-        alt: 'Five star rating'
-      }
+      content: [
+        {
+          type: 'image',
+          data: {
+            src: '/path/to/another-image.jpg',
+            alt: 'AI generated content'
+          }
+        },
+        {
+          type: 'text',
+          data: '<h3>Manage multiple accounts and platforms.</h3>'
+        }
+      ]
     },
     {
-      type: 'text',
-      data: '<p>Over 4,000 5-star reviews</p>'
-    }, 
+      content: [
+        {
+          type: 'text',
+          data: '<h3>Maintain a consistent posting schedule.</h3>'
+        },
+        {
+          type: 'image',
+          data: {
+            src: '/path/to/schedule-image.jpg',
+            alt: 'Scheduling posts'
+          }
+        }
+      ]
+    }
   ]
-}, {
+
+},{
   id: 2,
-  content: [
+  subGrid: [
     {
-      type: 'image',
-      data: {
-        src: '/path/to/another-image.jpg',
-        alt: 'AI generated content'
-      }
-    },
-    {
-      type: 'text',
-      data: '<h3>Manage multiple accounts and platforms.</h3>'
-    }
-]}, {
-  id: 3,
-  content: [
-    {
-      type: 'text',
-      data: '<h3>Maintain a consistent posting schedule.</h3>'
-    },
-    {
-      type: 'image',
-      data: {
-        src: '/path/to/schedule-image.jpg',
-        alt: 'Scheduling posts'
-      }
-    }
-  ]
-}, {
-  id: 4,
-  content: [
-    {
-      type: 'text',
-      data: '<h3>Schedule to social media.</h3>'
-    },
-    {
-      type: 'image',
-      data: {
-        src: '/path/to/insights-image.jpg',
-        alt: 'Analytics insights'
-      }
-    },
-     {
-      type: 'text',
-      data: '<h3>Optimize post timings to publish content at the perfect time for your audience.</h3>'
+      content: [
+        {
+          type: 'text',
+          data: '<h3>Schedule to social media.</h3>'
+        },
+        {
+          type: 'image',
+          data: {
+            src: '/path/to/insights-image.jpg',
+            alt: 'Analytics insights'
+          }
+        },
+        {
+          type: 'text',
+          data: '<h3>Optimize post timings to publish content at the perfect time for your audience.</h3>'
+        }
+      ]
     }
   ]
 }, { 
   id: 5,
-  content: [
-    {
-      type: 'image',
-      data: {
-        src: '/path/to/engagement-image.jpg',
-        alt: 'Engagement metrics'
-      }
-    },
-    {
-      type: 'text',
-      data: '<h3>Grow followers with non-stop content.</h3>'
+  subGrid: [
+    { 
+      content: [
+        {
+          type: 'image',
+          data: {
+            src: '/path/to/engagement-image.jpg',
+            alt: 'Engagement metrics'
+          }
+        },
+        {
+          type: 'text',
+          data: '<h3>Grow followers with non-stop content.</h3>'
+        }
+      ]
     }
   ]
 }, {
   id: 6,
-  content: [
-    {
-      type: 'text',
-      data: '<h3>>56% faster audience growth</h3>'
-    },
-    {
-      type: 'image',
-      data: {
-        src: '/path/to/performance-image.jpg',
-        alt: 'Performance analytics'
-      }
+  subGrid: [
+    { 
+      content: [
+        {
+          type: 'text',
+          data: '<h3>>56% faster audience growth</h3>'
+        },
+        {
+          type: 'image',
+          data: {
+            src: '/path/to/performance-image.jpg',
+            alt: 'Performance analytics'
+          }
+        }
+      ]
     }
   ]
 }, {
   id: 7,
-  content: [
-    {
-      type: 'text',
-      data: '<h3>Create and schedule content quicker.</h3>'
-    },
-    {
-      type: 'image',
-      data: {
-        src: '/path/to/collaboration-image.jpg',
-        alt: 'Team collaboration'
-      }
+  subGrid: [
+    { 
+      content: [
+        {
+          type: 'text',
+          data: '<h3>Create and schedule content quicker.</h3>'
+        },
+        {
+          type: 'image',
+          data: {
+            src: '/path/to/collaboration-image.jpg',
+            alt: 'Team collaboration'
+          }
+        }
+      ]
     }
   ]
 }, {
   id: 8,
-  content: [
-    {
-      type: 'text',
-      data: '<h3>Write your content using AI.</h3>'
-    },
-    {
-      type: 'image',
-      data: {
-        src: '/path/to/productivity-image.jpg',
-        alt: 'Productivity boost'
-      }
+  subGrid: [
+    { 
+      content: [
+        {
+          type: 'text',
+          data: '<h3>Write your content using AI.</h3>'
+        },
+        {
+          type: 'image',
+          data: {
+            src: '/path/to/productivity-image.jpg',
+            alt: 'Productivity boost'
+          }
+        }
+      ]
     }
   ]
 }];
-
 
 ---
 <BaseLayout pageTitle={pageTitle}>

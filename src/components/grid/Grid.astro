@@ -3,18 +3,29 @@ import type { IContent } from '@components/grid-item/GridItem.astro';
 
 import styles from './grid.module.css';
 
+import clsx from 'clsx';
 import GridItem from '@components/grid-item/GridItem.astro';
 
 export interface Props {
   gridContent: {
-    content: IContent[];
+    subGrid: {
+      content: IContent[];
+    }[];
   }[]
 };
 
 const { gridContent } = Astro.props;
 ---
 <div class={styles.grid}>
-  {gridContent.map(item => (
-      <GridItem content={item.content}/>
+  {gridContent.map(({ subGrid }, i) => (
+    subGrid.length === 1 ? (
+      <GridItem cssClass={styles.gridItem} itemKey={`item-${i}`} content={subGrid[0].content}/>
+    ) : (  
+      <div class={clsx(styles.gridItem, styles.subgrid)} data-item={`item-${i}`}>     
+        {subGrid.map((item, j) => (
+          <GridItem cssClass={styles.subgridItem} itemKey={`subgrid-item-${j}`} content={item.content}/>
+        ))}
+      </div>
+    )
   ))}
 </div>
